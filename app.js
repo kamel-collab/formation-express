@@ -1,18 +1,23 @@
-import http from 'http';
-const server = http.createServer((req, res) => {
-    const url = new URL(req.url, `http://${req.headers.host}`);
+import express from 'express';
 
-
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    if (url.pathname === '/search') {
-        const keyword = url.searchParams.get('keyword');
-        res.end(`<h1>Search Results for "${keyword}"</h1>`);
-    } else {
-        res.end('<h1>Welcome to the Home Page</h1>');
-    }
-
+const app = express();
+ app.use((req, res, next) => {
+    console.log(`un midlware est executé pour la route: ${req.path}`);
+    next();
 });
 
-server.listen(3000, () => {
-    console.log('Server running at http://localhost:3000/');
+
+app.get('/', (req, res) => {
+    res.send('<h1>Hello, World!</h1>');
+});
+app.get('/search/:id', (req, res) => {
+    const keyword = req.params.id;
+    res.send(`<h1>Search Results for: ${keyword}</h1>`);
+    
+});
+app.get('/shop', (req, res) => {
+    res.send('<h1>Our Shop</h1>');
+});
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });
