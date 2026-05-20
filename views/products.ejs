@@ -13,6 +13,7 @@ Page 7
     <% products.forEach((product) => { %>
       <li>
         <%= product.name %> - <%= product.price %> DA
+          <a href="/products/<%= product.id %>">Voir les détails</a>
       </li>
     <% }) %>
   </ul>
