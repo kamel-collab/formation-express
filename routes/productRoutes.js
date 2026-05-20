@@ -1,7 +1,6 @@
-import express from 'express';
-import { getAllProducts, getProductById, searchProducts } from '../controllers/productController.js';
+import express from "express";
+import { getAllproducts } from "../controllers/productController.js";
 const route = express.Router();
+route.get("/", getAllproducts);
 
-route.get('/products', getAllProducts);
-route.get('/products/:id', getProductById);
-route.get('/search', searchProducts);
+export default route;

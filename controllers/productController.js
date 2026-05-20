@@ -1,16 +1,10 @@
-//getAllProducts
-//getProductById
-//searchProducts
 
-export function getAllProducts(req, res) {
-    res.send('<h1>All Products</h1>');
-}
+const products = [
+  { id: 1, name: "Clavier mécanique", price: 8500 },
+  { id: 2, name: "Souris sans fil", price: 3200 },
+  { id: 3, name: "Écran 24 pouces", price: 28000 }
+];
 
-export function getProductById(req, res) {
-    const productId = req.params.id;
-    res.send(`<h1>Product Details for ID: ${productId}</h1>`);
-}
-export function searchProducts(req, res) {
-    const keyword = req.query.keyword;
-    res.send(`<h1>Search Results for: ${keyword}</h1>`);
+export function getAllproducts(req, res)  {
+  res.render("products", { title: "products", products: products });
 }
